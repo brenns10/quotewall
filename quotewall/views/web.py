@@ -13,6 +13,8 @@ from quotewall import app
 from quotewall.logic.quote import create_quote
 from quotewall.logic.quote import get_recent_quotes
 from quotewall.logic.quote import get_quote_by_id
+from quotewall.logic.quote import get_recent_quotes_by_user
+from quotewall.logic.quote import get_recent_submissions_by_user
 from quotewall.logic.user import authenticate_user
 from quotewall.logic.user import get_by_username
 
@@ -75,3 +77,15 @@ def view_quote(quote_id):
     if not quote:
         abort(404)
     return render_template('quote.html', quote=quote)
+
+
+@app.route('/user/<string:username>', methods=['GET'])
+@login_required
+def view_user(username):
+    user = get_by_username(username)
+    if not user:
+        abort(404)
+    return render_template(
+        'user.html', user=user, quotes=get_recent_quotes_by_user(user),
+        submissions=get_recent_submissions_by_user(user),
+    )

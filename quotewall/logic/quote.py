@@ -16,3 +16,10 @@ def get_recent_quotes(limit=10):
 
 def get_quote_by_id(id):
     return Quote.query.get(id)
+
+
+def get_recent_quotes_by_user(user, limit=5):
+    return user.quotes.limit(limit).all()
+
+def get_recent_submissions_by_user(user, limit=5):
+    return user.posts.limit(limit).all()

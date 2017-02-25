@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% import "parts/quote.html" as quote %}
+{% block title %}{{ user.real_name }}{% endblock %}
+{% block content %}
+    <h1>{{ user.real_name }}</h1>
+    <h3>aka {{ user.username }}</h3>
+    <h2>Quotes</h2>
+    {% for q in quotes %}
+        {{ quote.quote(q, quot=False) }}
+    {% endfor %}
+    <h2>Submissions</h2>
+    {% for q in submissions %}
+        {{ quote.quote(q, sub=False) }}
+    {% endfor %}
+{% endblock %}

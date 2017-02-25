@@ -16,11 +16,12 @@ class User(db.Model):
     password = db.Column(db.String, nullable=False)
 
     posts = db.relationship('Quote', back_populates='poster',
-                            foreign_keys='Quote.poster_id')
+                            foreign_keys='Quote.poster_id', lazy='dynamic')
     quotes = db.relationship('Quote', back_populates='quoted',
-                             foreign_keys='Quote.quoted_id')
+                             foreign_keys='Quote.quoted_id', lazy='dynamic')
     ratings = db.relationship('QuoteRating', back_populates='user',
-                              foreign_keys='QuoteRating.user_id')
+                              foreign_keys='QuoteRating.user_id',
+                              lazy='dynamic')
 
     def __init__(self, username, email, password, real_name):
         self.username = username

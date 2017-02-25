@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}{% endblock %} | {{ config.APP_NAME }}</title>
+    </head>
+    <body>
+        {% for message in get_flashed_messages() %}
+            <div class=flash>{{ message }}</div>
+        {% endfor %}
+        {% block content %}{% endblock %}
+    </body>
+</html>

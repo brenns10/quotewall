@@ -54,8 +54,9 @@ class User(db.Model):
 @login_manager.user_loader
 def load_user(str_id):
     """Returns a user by the unicode id, or None."""
+    print(str_id)
     try:
         int_id = int(str_id)
     except ValueError:
         return None
-    return User.get(int_id)
+    return User.query.get(int_id)

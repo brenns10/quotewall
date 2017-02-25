@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+{% block title %}{{ quote.quoted.username }}'s quote{% endblock %}
+{% block content %}
+    <h1>{{quote.quoted.username}}'s quote</h1>
+    <div class="quote">
+        <p>{{quote.text}}</p>
+        <p>&mdash;{{ quote.quoted.username }}</p>
+        <p>Submitted by: {{ quote.poster.username }}</p>
+    </div>
+{% endblock %}

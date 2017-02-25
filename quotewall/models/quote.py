@@ -7,6 +7,11 @@ from quotewall import db
 class Quote(db.Model):
     __tablename__ = 'quotes'
 
+    def __init__(self, text, quoted, poster):
+        self.text = text
+        self.quoted = quoted
+        self.poster = poster
+
     id = db.Column(db.Integer, primary_key=True, nullable=False,
                    autoincrement=True)
     poster_id = db.Column(db.Integer, db.ForeignKey('users.id'),

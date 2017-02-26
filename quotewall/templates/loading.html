@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block title %}Loading{% endblock %}
+{% block head %}
+    <meta http-equiv="refresh" content="{{ seconds }}; {{ target }}">
+{% endblock %}
+{% block content %}
+    <h2 class="text-center">Loading...</h2>
+    <p class="text-center">{{ message}}</p>
+    <br>
+    <img src="{{ url_for('static', filename='infinite-kool-aid.gif') }}"
+         class="qw-loading" alt="sit tight!" >
+{% endblock %}
+{% block script %}
+    <script>
+     setTimeout(function() {window.location = "{{ target }}"}, {{ seconds }} * 1000);
+    </script>
+{% endblock %}

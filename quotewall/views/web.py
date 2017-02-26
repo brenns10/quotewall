@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
+import random
+
 from flask import abort
 from flask import flash
 from flask import redirect
 from flask import render_template
 from flask import request
-from flask import send_from_directory
 from flask import url_for
 from flask_login import current_user
 from flask_login import login_required
@@ -52,6 +53,11 @@ def login_post():
         return render_template('login.html')
 
 
+@app.route('/quote', methods=['GET'])
+def quote_form():
+    return render_template('new_quote.html')
+
+
 @app.route('/quote', methods=['POST'])
 @login_required
 def quote():
@@ -71,7 +77,10 @@ def quote():
     create_quote(text, quoted, current_user)
     flash('Created quote!', 'success')
     # TODO: redirect to newly created quote
-    return redirect(url_for('home'))
+    return render_template(
+        'loading.html', target=url_for('home'), seconds=random.randint(1, 3),
+        message=random.choice(app.config['LOADING_MESSAGES']),
+    )
 
 
 @app.route('/quote/<int:quote_id>', methods=['GET'])

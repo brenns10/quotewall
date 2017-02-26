@@ -4,7 +4,7 @@ setup(
     name='quotewall',
     packages=find_packages(include=['quotewall*']),
     package_data={
-        'quotewall': ['static/*'],
+        'quotewall': ['static/*', 'templates/*'],
     },
     install_requires=[
         'flask',

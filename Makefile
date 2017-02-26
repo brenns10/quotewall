@@ -1,13 +1,13 @@
 .PHONY: run-dev
 
-run-dev:
+run:
 	FLASK_APP=quotewall \
 	FLASK_DEBUG=1 \
 	QUOTEWALL_SETTINGS=$(shell pwd)/config_example.py \
 	flask run
 
-shell-dev:
+shell:
 	FLASK_APP=quotewall \
 	FLASK_DEBUG=1 \
 	QUOTEWALL_SETTINGS=$(shell pwd)/config_example.py \
-	flask shell
+	flask shell --use-shell ptipython

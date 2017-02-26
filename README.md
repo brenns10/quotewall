@@ -25,4 +25,25 @@ Screenshots
 Instructions
 ------------
 
-TODO :)
+The application needs to be installed with pip into a virtualenv.
+
+```bash
+$ python -m venv venv
+$ . venv/bin/activate
+$ pip install -e .
+$ pip install -r requirements.txt
+
+# Run shell in the application context
+$ make shell
+
+# Create your db and first user so you can log in.
+In [1]: from quotewall.models.user import User
+In [2]: from quotewall import db
+In [3]: db.create_all()
+In [4]: admin = User('username', 'email@example.com', 'password', 'Real Name')
+In [5]: db.session.add(admin)
+In [6]: db.session.commit()
+
+# Run development server on localhost:5000
+$ make run
+```

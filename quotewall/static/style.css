@@ -1,0 +1,45 @@
+.qw-footer {
+    text-align: center;
+    margin-top: 50px;
+    padding-top: 30px;
+    border-top: 1px solid #ddd;
+}
+.qw-quotewall {
+    background-image: url("corkboard.jpeg");
+    background-repeat: repeat;
+    border-style: inset;
+    border-width: 5px;
+    border-color: brown;
+    padding: 30px;
+    margin-bottom: 50px;
+}
+.qw-quote {
+    background-image: url("stickynote.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    padding: 60px 30px;
+    min-height: 300px;
+}
+.qw-quoted {
+    text-align: right;
+}
+
+.qw-submitter {
+    font-size: 13px;
+    position: absolute;
+    bottom: 10px;
+    color: #aaa;
+}
+
+.qw-quote {
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    font-size: 14pt;
+}
+
+.qw-click-div {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}

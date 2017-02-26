@@ -5,11 +5,15 @@
     <h1>{{ user.real_name }}</h1>
     <h3>aka {{ user.username }}</h3>
     <h2>Quotes</h2>
-    {% for q in quotes %}
-        {{ quote.quote(q, quot=False) }}
-    {% endfor %}
+    <div class="row qw-quotewall">
+         {% for q in quotes %}
+             {{ quote.quote(q, quot=False) }}
+         {% endfor %}
+    </div>
     <h2>Submissions</h2>
-    {% for q in submissions %}
-        {{ quote.quote(q, sub=False) }}
-    {% endfor %}
+    <div class="row qw-quotewall">
+        {% for q in submissions %}
+            {{ quote.quote(q, sub=False) }}
+        {% endfor %}
+    </div>
 {% endblock %}

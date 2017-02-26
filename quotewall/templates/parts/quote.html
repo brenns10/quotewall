@@ -1,11 +1,12 @@
 {% macro quote(q, sub=True, quot=True) %}
-    <div class="quote" >
-        <p><a href="{{ url_for("view_quote", quote_id=q.id) }}">{{ q.text }}</a></p>
+    <div class="col-md-4 col-sm-6 col-xs-8 qw-quote" >
+        <a href="{{ url_for("view_quote", quote_id=q.id) }}" class="qw-click-div"></a>
+        <p>{{ q.text }}</p>
         {% if quot %}
-            <p>&mdash;<a href="{{ url_for("view_user", username=q.quoted.username) }}">{{q.quoted.username}}</a></p>
+            <p class="qw-quoted">&mdash;<a href="{{ url_for("view_user", username=q.quoted.username) }}">{{q.quoted.username}}</a></p>
        {% endif %}
        {% if sub %}
-           <p>Submitted by: <a href="{{ url_for("view_user", username=q.poster.username) }}">{{ q.poster.username }}</a></p>
+           <p class="qw-submitter">Submitted by: <a href="{{ url_for("view_user", username=q.poster.username) }}">{{ q.poster.username }}</a></p>
        {% endif %}
     </div>
 {% endmacro %}

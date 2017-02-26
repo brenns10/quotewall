@@ -1,13 +1,11 @@
-.PHONY: run-dev
+.PHONY: run shell
 
-run:
-	FLASK_APP=quotewall \
-	FLASK_DEBUG=1 \
-	QUOTEWALL_SETTINGS=$(shell pwd)/config_example.py \
+export FLASK_APP=quotewall
+export FLASK_DEBUG=1
+export QUOTEWALL_SETTINGS=$(shell pwd)/config_example.py
+
+run: envvars
 	flask run
 
-shell:
-	FLASK_APP=quotewall \
-	FLASK_DEBUG=1 \
-	QUOTEWALL_SETTINGS=$(shell pwd)/config_example.py \
+shell: envvars
 	flask shell --use-shell ptipython

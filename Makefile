@@ -4,8 +4,14 @@ export FLASK_APP=quotewall
 export FLASK_DEBUG=1
 export QUOTEWALL_SETTINGS=$(shell pwd)/config_example.py
 
-run: envvars
+run:
 	flask run
 
-shell: envvars
+shell:
 	flask shell --use-shell ptipython
+
+migration:
+	cd quotewall; flask db migrate
+
+migrate:
+	cd quotewall; flask db upgrade

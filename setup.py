@@ -1,14 +1,17 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 setup(
     name='quotewall',
-    packages=['quotewall'],
-    include_package_data=True,
+    packages=find_packages(include=['quotewall*']),
+    package_data={
+        'quotewall': ['static/*'],
+    },
     install_requires=[
         'flask',
         'sqlalchemy',
         'flask-sqlalchemy',
         'flask-login',
+        'flask-migrate',
         'werkzeug',
     ],
 )

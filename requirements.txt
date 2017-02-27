@@ -3,3 +3,5 @@
 # truth in setup.py
 flask-shell
 ptipython
+wheel
+docker-compose

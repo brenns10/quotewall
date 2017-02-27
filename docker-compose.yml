@@ -4,6 +4,8 @@ services:
     image: postgres
   web:
     build: .
+    environment:
+      - QUOTEWALL_SETTINGS=/etc/config.py
     ports:
       - "80:80"
     depends_on:

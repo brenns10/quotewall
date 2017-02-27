@@ -15,3 +15,19 @@ migration:
 
 migrate:
 	cd quotewall; flask db upgrade
+
+dist/quotewall-0.0.0-py3-none-any.whl: $(shell find quotewall -type f) setup.py
+	python setup.py bdist_wheel
+
+docker-build: dist/quotewall-0.0.0-py3-none-any.whl
+	docker-compose build
+
+docker-start: docker-build
+	docker-compose start
+
+docker-stop:
+	docker-compose stop
+
+docker-init: docker-build
+	docker-compose run web python3 -m quotewall init_db
+	docker-compose run web python3 -m quotewall add_user

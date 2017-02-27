@@ -12,11 +12,11 @@ RUN apk add --update \
     && chown -R nginx:www-data /var/lib/nginx
 
 RUN python3 -m ensurepip
-COPY dist/quotewall-0.0.0-py3-none-any.whl /
 RUN pip3 install wheel
+RUN pip3 install uwsgi
+COPY dist/quotewall-0.0.0-py3-none-any.whl /
 RUN pip3 install quotewall-0.0.0-py3-none-any.whl
 RUN rm quotewall-0.0.0-py3-none-any.whl
-RUN pip3 install uwsgi
 
 RUN rm /etc/nginx/nginx.conf
 RUN rm /etc/supervisord.conf

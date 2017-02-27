@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+import os.path
+
 from flask import Flask
 from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
@@ -11,7 +13,7 @@ db = SQLAlchemy(app)
 login_manager = LoginManager()
 login_manager.login_view = 'login_post'
 login_manager.init_app(app)
-migrate = Migrate(app, db)
+migrate = Migrate(app, db, directory=os.path.join(__file__, 'migrations'))
 manager = Manager(app)
 
 import quotewall.views

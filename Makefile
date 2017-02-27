@@ -11,10 +11,10 @@ shell:
 	flask shell --use-shell ptipython
 
 migration:
-	cd quotewall; flask db migrate
+	flask db migrate
 
 migrate:
-	cd quotewall; flask db upgrade
+	flask db upgrade
 
 dist/quotewall-0.0.0-py3-none-any.whl: $(shell find quotewall -type f) setup.py
 	python setup.py bdist_wheel

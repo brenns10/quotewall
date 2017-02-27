@@ -13,7 +13,7 @@ db = SQLAlchemy(app)
 login_manager = LoginManager()
 login_manager.login_view = 'login_post'
 login_manager.init_app(app)
-migrate = Migrate(app, db, directory=os.path.join(__file__, 'migrations'))
+migrate = Migrate(app, db, directory=os.path.join(os.path.dirname(__file__), 'migrations'))
 manager = Manager(app)
 
 import quotewall.views

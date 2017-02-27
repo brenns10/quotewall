@@ -4,3 +4,4 @@ quotewall.egg-info
 dist
 build
 config.py
+docker-build

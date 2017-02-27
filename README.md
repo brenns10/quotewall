@@ -47,3 +47,24 @@ In [6]: db.session.commit()
 # Run development server on localhost:5000
 $ make run
 ```
+
+Deployment
+----------
+
+I have written a docker file, and this application can be deployed with
+`docker-compose`. The Makefile doesn't do everything, but it does automate a few
+of the tasks.
+
+```bash
+# This will do the first build process and start the docker container running.
+$ make docker-first-run
+
+# After you make changes, you need to rebuild the image.
+$ make docker-update
+
+# You can stop everything with the following command.
+$ docker-compose stop
+
+# And start it back up again.
+$ docker-compose start
+```

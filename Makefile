@@ -1,4 +1,4 @@
-.PHONY: run shell
+.PHONY: run shell migration migrate docker-first-run docker-update
 
 export FLASK_APP=quotewall
 export FLASK_DEBUG=1
@@ -19,15 +19,14 @@ migrate:
 dist/quotewall-0.0.0-py3-none-any.whl: $(shell find quotewall -type f) setup.py
 	python setup.py bdist_wheel
 
-docker-build: dist/quotewall-0.0.0-py3-none-any.whl
-	docker-compose build
-
-docker-start: docker-build
-	docker-compose start
-
-docker-stop:
-	docker-compose stop
-
-docker-init: docker-build
+docker-first-run: dist/quotewall-0.0.0-py3-none-any.whl
+	docker-compose up -d
+	sleep 1
 	docker-compose run web python3 -m quotewall init_db
 	docker-compose run web python3 -m quotewall add_user
+	touch docker-build
+
+docker-update: dist/quotewall-0.0.0-py3-none-any.whl
+	docker-compose stop
+	docker-compose up -d --build
+	touch docker-build

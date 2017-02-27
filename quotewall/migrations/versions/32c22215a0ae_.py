@@ -25,7 +25,7 @@ def upgrade():
     sa.Column('expires', sa.DateTime(timezone=True), nullable=False),
     sa.PrimaryKeyConstraint('id')
     )
-    op.add_column('users', sa.Column('is_admin', sa.Boolean(), server_default=sa.text('0'), nullable=False))
+    op.add_column('users', sa.Column('is_admin', sa.Boolean(), server_default=sa.false(), nullable=False))
     op.add_column('users', sa.Column('registration_link_id', sa.Integer(), nullable=True))
     op.create_foreign_key(None, 'users', 'registration_link', ['registration_link_id'], ['id'])
     # ### end Alembic commands ###

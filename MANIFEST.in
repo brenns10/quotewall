@@ -1,0 +1,3 @@
+include quotewall/static/*
+include quotewall/templates/*
+include quotewall/migrations/*

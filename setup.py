@@ -3,9 +3,7 @@ from setuptools import setup, find_packages
 setup(
     name='quotewall',
     packages=find_packages(include=['quotewall*']),
-    package_data={
-        'quotewall': ['static/*', 'templates/*', 'templates/parts/*'],
-    },
+    include_package_data=True,
     install_requires=[
         'flask',
         'sqlalchemy',

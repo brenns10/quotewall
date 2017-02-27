@@ -6,7 +6,7 @@ services:
       - '80:80'
       - '443:443'
     environment:
-      - DOMAINS: 'home.brenns10.com'
+      - DOMAINS=home.brenns10.com
   db:
     image: postgres
   web:

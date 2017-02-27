@@ -13,6 +13,20 @@ def init_db():
 
 
 @manager.command
+def add_admin():
+    'adds an admin based on prompts'
+    username = input('Username: ')
+    email = input('Email: ')
+    password = getpass.getpass()
+    real_name = input('Real Name: ')
+    user = User(username, email, password, real_name)
+    user.is_admin = True
+    db.session.add(user)
+    db.session.commit()
+    print('Added admin!')
+
+
+@manager.command
 def add_user():
     'adds a user based on prompts'
     username = input('Username: ')

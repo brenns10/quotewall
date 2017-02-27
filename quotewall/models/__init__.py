@@ -2,3 +2,4 @@
 from . import user
 from . import quote
 from . import quote_rating
+from . import registration_link

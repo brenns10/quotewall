@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
+from sqlalchemy.sql import expression
 from werkzeug.security import check_password_hash
 from werkzeug.security import generate_password_hash
+
 from quotewall import db
 from quotewall import login_manager
 
@@ -14,6 +16,11 @@ class User(db.Model):
     email = db.Column(db.String, nullable=False)
     real_name = db.Column(db.String, nullable=False)
     password = db.Column(db.String, nullable=False)
+    registration_link_id = db.Column(db.Integer,
+                                     db.ForeignKey('registration_link.id'),
+                                     nullable=True)
+    is_admin = db.Column(db.Boolean, nullable=False, default=False,
+                         server_default=expression.false())
 
     posts = db.relationship('Quote', back_populates='poster',
                             foreign_keys='Quote.poster_id', lazy='dynamic')
@@ -22,6 +29,8 @@ class User(db.Model):
     ratings = db.relationship('QuoteRating', back_populates='user',
                               foreign_keys='QuoteRating.user_id',
                               lazy='dynamic')
+    registration_link = db.relationship('RegistrationLink',
+                                        back_populates='users')
 
     def __init__(self, username, email, password, real_name):
         self.username = username

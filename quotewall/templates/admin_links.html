@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+{% import "part_flash.html" as flash %}
+{% block title %}Registration Links{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2 col-xs-10 col-xs-offset-1" >
+            <h1>Registration Links</h1>
+            <div class="panel panel-default">
+                {{ flash.display_flash_messages() }}
+                <div class="panel-heading">Existing Links</div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Link</th>
+                            <th>Uses</th>
+                            <th>Expires</th>
+                            <th>Users</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for link in links %}
+                            <tr>
+                            <td><a href="{{ url_for('delete_link', uuid=link.uuid) }}"><span class="glyphicon glyphicon-trash"></span></a></td>
+                            <td><a href="{{ url_for('register', uuid=link.uuid) }}">{{ link.uuid }}</a></td>
+                            <td>{{ link.uses }}</td>
+                            <td>{{ link.expires.strftime('%d %b, %I:%M %p') }}</td>
+                            <td>
+                                {% for user in link.users %}
+                                    <a href="{{ url_for('view_user', username=user.username) }}">{{ user.username }}</a>
+                                    {% if not loop.last %}
+                                        ,
+                                    {% endif %}
+                                {% endfor %}
+                            </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <form target="{{ url_for('new_link') }}" method="post">
+                <h3>New Link</h3>
+                <div class="form-group">
+                    <label for="uses">Uses</label>
+                    <input type="number" name="uses" min="1" max="1000" value="1" class="form-control">
+                </div>
+                <button type="submit" value="submit" class="btn btn-default">Create</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

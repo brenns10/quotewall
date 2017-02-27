@@ -23,7 +23,7 @@ docker-first-run: dist/quotewall-0.0.0-py3-none-any.whl
 	docker-compose up -d
 	sleep 1
 	docker-compose run web python3 -m quotewall init_db
-	docker-compose run web python3 -m quotewall add_user
+	docker-compose run web python3 -m quotewall add_admin
 	touch docker-build
 
 docker-update: dist/quotewall-0.0.0-py3-none-any.whl

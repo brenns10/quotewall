@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% import "part_flash.html" as flash %}
+{% block title %}Register{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
+            <div class="panel panel-default">
+                <div class="panel-heading">Register</div>
+                <div class="panel-body">
+                {{ flash.display_flash_messages() }}
+                    {% if show_form %}
+                        <form action="{{ url_for('register', uuid=uuid) }}" method="post">
+                            <div class="form-group">
+                                <label for="username">Username</label>
+                                <input type="text"  name="username" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" name="password" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" name="email" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="name">Real Name</label>
+                                <input type="text" name="name" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" value="submit" class="btn btn-lg btn-default">Login</button>
+                            </div>
+                        </form>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

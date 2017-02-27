@@ -1,3 +1,4 @@
 include quotewall/static/*
 include quotewall/templates/*
 include quotewall/migrations/*
+include quotewall/migrations/versions/*
